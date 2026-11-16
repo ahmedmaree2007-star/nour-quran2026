@@ -63,7 +63,7 @@ if(document.getElementById("authForm")){
     if(location.protocol==="file:")throw new Error("FILE");
     if(!window.crypto||!crypto.subtle)throw new Error("HTTPS");
     try{
-      const r=await fetch(DOC+"?key="+API_KEY+"&_="+Date.now());
+      const r=await fetch(DOC+"?key="+API_KEY,{cache:"no-store"});
       if(r.ok){const j=await r.json();return JSON.parse(j.fields.json.stringValue)}
     }catch(e){}
     return oldLoad();
